@@ -4,10 +4,13 @@ threadsafe: yes
 
 handlers:
 
-- url: /stylesheets
-  static_dir: stylesheets
+- url: /stylesheet
+  static_dir: stylesheet
 - url: /.*
   script: main.app
+- url: /images
+  static_dir: images
+
 
 libraries:
 - name: webapp2

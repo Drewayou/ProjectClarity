@@ -1,11 +1,12 @@
+application: userapp
+version: 1
 runtime: python27
 api_version: 1
 threadsafe: yes
 
 handlers:
-
-- url: /stylesheets
-  static_dir: stylesheets
+- url: /stylesheet
+  static_dir: stylesheet
 - url: /.*
   script: main.app
 

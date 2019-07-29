@@ -9,7 +9,7 @@ the_jinja_env = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
-class MainPage(webapp2.RequestHandler):
+class FirstPage(webapp2.RequestHandler):
     def get(self):
         First_html = the_jinja_env.get_template('first.html')
         self.response.write(First_html.render())
@@ -19,7 +19,7 @@ class ClarityUser(ndb.Model):
     last_name = ndb.StringProperty()
     email = ndb.StringProperty()
 
-class MainHandler(webapp2.RequestHandler):
+class MainPage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         if user:
@@ -29,7 +29,8 @@ class MainHandler(webapp2.RequestHandler):
             clarity_user = ClarityUser.query().filter(ClarityUser.email == email_address).get()
             if clarity_user:
                 self.response.write(
-                  "Looks like you're registered. Thanks for using our site!")
+                  'Looks like you\'re registered. Thanks for using our site!<br><a href="/start">Next</a><br>')
+                self.response.write(signout_link_html)
             else:
                 # Registration form for a first-time visitor:
                 self.response.write('''
@@ -56,9 +57,10 @@ class MainHandler(webapp2.RequestHandler):
             email = user.nickname()
         )
         clarity_user.put()
-        self.response.write('Thanks for signing up, %s! <br><a href="/">Home</a>' % clarity_user.first_name)
+        self.response.write('Thanks for signing up, %s! <br><a href="/start">Next</a>' % clarity_user.first_name)
 
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),
+    ('/start', FirstPage)
 ], debug=True)

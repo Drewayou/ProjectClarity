@@ -83,7 +83,6 @@ class QuizPage(webapp2.RequestHandler):
         self.response.write(Quiz_html.render(variable_dict))
 
 
-
 app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/start', FirstPage),

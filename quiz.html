@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Clarity Quiz</title>
+    <script src = "changes.js"></script>
   </head>
   <body>
     <form class="" action="/quiz" method="post">
@@ -10,7 +11,7 @@
           {% for answer in question["answers"] %}
           <input type="radio" name="answer-choice" value="">{{answer}}<br><br>
           {% endfor %}
-          <input type="submit" name="Next" value="Next"><br>
+          <input id = "nextbutton" type="submit" name="Next" value="Next"><br>
     </form>
   </body>
 </html>

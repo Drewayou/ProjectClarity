@@ -5,8 +5,15 @@
     <title>Clarity Quiz</title>
   </head>
   <body>
-    {% for each in questions %}
-      {{each}}
-    {% endfor %}
+    <form class="" action="index.html" method="post">
+      {% for each in questions %}
+        {{each['question']}}
+        <select class="text" name="">
+          {% for answer in each["answers"] %}
+            <option value="">answer</option>
+          {% endfor %}
+        </select>
+      {% endfor %}
+    </form>
   </body>
 </html>

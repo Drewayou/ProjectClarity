@@ -3,6 +3,7 @@ import jinja2
 import os
 from google.appengine.api import users
 from google.appengine.ext import ndb
+import questions
 
 the_jinja_env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -29,7 +30,7 @@ class MainPage(webapp2.RequestHandler):
             clarity_user = ClarityUser.query().filter(ClarityUser.email == email_address).get()
             if clarity_user:
                 self.response.write(
-                  'Looks like you\'re registered. Thanks for using our site!<br><a href="/start">Next</a><br>')
+                  'Looks like you\'re registered. Thanks for using our site!<br><a href="/quiz">Next</a><br>')
                 self.response.write(signout_link_html)
             else:
                 # Registration form for a first-time visitor:
@@ -57,10 +58,19 @@ class MainPage(webapp2.RequestHandler):
             email = user.nickname()
         )
         clarity_user.put()
-        self.response.write('Thanks for signing up, %s! <br><a href="/start">Next</a>' % clarity_user.first_name)
+        self.response.write('Thanks for signing up, %s! <br><a href="/quiz">Next</a>' % clarity_user.first_name)
+
+class QuizPage(webapp2.RequestHandler):
+    def get(self):
+        Quiz_html = the_jinja_env.get_template('quiz.html')
+        variable_dict= {
+        "questions": questions.elements
+        }
+        self.response.write(Quiz_html.render(variable_dict))
 
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),
-    ('/start', FirstPage)
+    ('/start', FirstPage),
+    ('/quiz', QuizPage)
 ], debug=True)

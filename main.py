@@ -12,6 +12,11 @@ the_jinja_env = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
+class Aboutus(webapp2.RequestHandler):
+    def get(self):
+        Aboutus_html = the_jinja_env.get_template('Aboutus.html')
+        self.response.write(Aboutus_html.render())
+
 class Loginpg(webapp2.RequestHandler):
     def get(self):
         Loginpg_html = the_jinja_env.get_template('Loginpg.html')
@@ -55,6 +60,12 @@ class MainPage(webapp2.RequestHandler):
           # If the user isn't logged in...
             login_url = users.create_login_url('/')
             login_html_element = '<a href="%s">Sign in</a>' % login_url
+            Login_html = the_jinja_env.get_template('Loginpg.html')
+            login_url = users.create_login_url('/')
+            login_dict={
+            "login_url": login_url
+            }
+            self.response.write(Login_html.render(login_dict))
             self.response.write('Please log in.<br>' + login_html_element)
 
 
@@ -94,4 +105,5 @@ app = webapp2.WSGIApplication([
     ('/quiz', QuizPage),
     ('/login', Loginpg),
     ('/results-c', ResultsCPage),
-    ])
+    ('/about', Aboutus),
+], debug=True)

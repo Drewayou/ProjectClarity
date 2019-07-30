@@ -81,8 +81,7 @@ class QuizPage(webapp2.RequestHandler):
         "question": problems.pop()
         }
         self.response.write(Quiz_html.render(variable_dict))
-    def post(self):
-        
+
 
 
 app = webapp2.WSGIApplication([

@@ -1,6 +1,8 @@
 import webapp2
 import jinja2
 import os
+import json
+import random
 from google.appengine.api import users
 from google.appengine.ext import ndb
 import questions
@@ -19,6 +21,7 @@ class ClarityUser(ndb.Model):
     first_name = ndb.StringProperty()
     last_name = ndb.StringProperty()
     email = ndb.StringProperty()
+    quiz_questions = ndb.JsonProperty()
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
@@ -52,21 +55,29 @@ class MainPage(webapp2.RequestHandler):
 
     def post(self):
         user = users.get_current_user()
+        random.shuffle(questions.elements)
         clarity_user = ClarityUser(
             first_name = self.request.get('first name'),
             last_name = self.request.get('last name'),
-            email = user.nickname()
-        )
+            email = user.nickname(),
+            quiz_questions = json.dumps(questions.elements, separators=(',', ':'))
+            )
+
         clarity_user.put()
         self.response.write('Thanks for signing up, %s! <br><a href="/quiz">Next</a>' % clarity_user.first_name)
 
 class QuizPage(webapp2.RequestHandler):
     def get(self):
+        user = users.get_current_user()
+        quiz_taker = ClarityUser.query().filter(ClarityUser.email == user.nickname()).fetch()
         Quiz_html = the_jinja_env.get_template('quiz.html')
+        problems = json.loads(quiz_taker[0].quiz_questions)
         variable_dict= {
-        "questions": questions.elements
+        "question": problems.pop()
         }
         self.response.write(Quiz_html.render(variable_dict))
+    def post(self):
+        
 
 
 app = webapp2.WSGIApplication([

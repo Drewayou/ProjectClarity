@@ -5,15 +5,12 @@
     <title>Clarity Quiz</title>
   </head>
   <body>
-    <form class="" action="index.html" method="post">
-      {% for each in questions %}
-        {{each['question']}}
-        <select class="text" name="">
-          {% for answer in each["answers"] %}
-            <option value="">answer</option>
+    <form class="" action="/quiz" method="post">
+      {{question["question"]}}<br><br>
+          {% for answer in question["answers"] %}
+          <input type="radio" name="answer-choice" value="">{{answer}}<br><br>
           {% endfor %}
-        </select>
-      {% endfor %}
+          <input type="submit" name="Next" value="Next"><br>
     </form>
   </body>
 </html>

@@ -38,7 +38,7 @@ class MainPage(webapp2.RequestHandler):
             clarity_user = ClarityUser.query().filter(ClarityUser.email == email_address).get()
             if clarity_user:
                 self.response.write(
-                  'Looks like you\'re registered. Thanks for using our site!<br><a href="/quiz">Next</a><br>')
+                  'Looks like you\'re registered. Thanks for using our site!<br><a href="/start">Next</a><br>')
                 self.response.write(signout_link_html)
             else:
                 # Registration form for a first-time visitor:
@@ -69,7 +69,7 @@ class MainPage(webapp2.RequestHandler):
             )
 
         clarity_user.put()
-        self.response.write('Thanks for signing up, %s! <br><a href="/quiz">Next</a>' % clarity_user.first_name)
+        self.response.write('Thanks for signing up, %s! <br><a href="/start">Next</a>' % clarity_user.first_name)
 
 class QuizPage(webapp2.RequestHandler):
     def get(self):

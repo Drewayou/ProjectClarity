@@ -82,10 +82,16 @@ class QuizPage(webapp2.RequestHandler):
         }
         self.response.write(Quiz_html.render(variable_dict))
 
+class ResultsCPage(webapp2.RequestHandler):
+    def get(self):
+
+        self.response.write
+
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/start', FirstPage),
     ('/quiz', QuizPage),
-    ('/login', Loginpg)
-], debug=True)
+    ('/login', Loginpg),
+    ('/results-c', ResultsCPage),
+    ])

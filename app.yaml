@@ -7,11 +7,10 @@ threadsafe: yes
 handlers:
 - url: /stylesheet
   static_dir: stylesheet
-- url: /.*
-  script: main.app
 - url: /videos
   static_dir: videos
-
+- url: /.*
+  script: main.app
 
 libraries:
 - name: webapp2

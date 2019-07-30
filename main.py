@@ -12,6 +12,11 @@ the_jinja_env = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
+class Loginpg(webapp2.RequestHandler):
+    def get(self):
+        Loginpg_html = the_jinja_env.get_template('Loginpg.html')
+        self.response.write(Loginpg_html.render())
+
 class FirstPage(webapp2.RequestHandler):
     def get(self):
         First_html = the_jinja_env.get_template('first.html')
@@ -83,5 +88,6 @@ class QuizPage(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/start', FirstPage),
-    ('/quiz', QuizPage)
+    ('/quiz', QuizPage),
+    ('/login', Loginpg)
 ], debug=True)

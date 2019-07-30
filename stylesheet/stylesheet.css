@@ -7,6 +7,10 @@
   min-height: 100%;
 }
 
+#input_usr_signin {
+    font-size: 75px;
+}
+
 #changin {
   animation-name: Changin_color;
   animation-duration: 4s;
@@ -19,18 +23,22 @@
     justify-content: center;
 }
 
+#centerbox2{
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px
+}
+
 #centr{
 text-align: center;
 }
 
-.kahtoot_txt{
-  color: white;
-  font-size: 125px;
-}
-
-.size{
-  width: 500px;
-  height: 100px;
+#centre2{
+  margin-top: 250px;
+  display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @keyframes Changin_color {

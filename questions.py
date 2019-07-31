@@ -1,6 +1,6 @@
 elements = [
 {
-    "question": "How much do you trust this person? (1) very little (5) a lot",
+    "question": "How much do you trust this person? 1) very little 5) a lot",
     "answers": {"1": "f", "2": "b", "3": "t", "4": "d", "5": "s"}
 },
 {
@@ -8,7 +8,7 @@ elements = [
     "answers": {"yes": "b", "no": "c"}
 },
 {
-    "question": "How much history do you guys have? (1) very little (5) a lot",
+    "question": "How much history do you guys have? 1) very little 5) a lot",
     "answers": {"1": "c", "2": "f", "3" : "t", "4": "d", "5": "s"}
 },
 {
@@ -40,7 +40,7 @@ elements = [
     "answers": {"yes": "s", "no": "t"}
 },
 {
-    "question": "How often do you guys talk? (1) not a lot (5) five+ times a day",
+    "question": "How often do you guys talk? 1) not a lot 5) five+ times a day",
     "answers": {"1": "c", "2": "f", "3": "d", "4": "s", "5": "t"}
 },
 {
@@ -60,7 +60,7 @@ elements = [
     "answers": {"deep": "s", "both": "t", "superficial": "c"}
 },
 {
-    "question": "How often do you spend time with this person? (1) not often at all (5) most days",
+    "question": "How often do you spend time with this person? 1) not often at all 5) most days",
     "answers": {"1": "c", "2": "t", "3": "f", "4": "d", "5": "s"}
 },
 {
@@ -68,7 +68,7 @@ elements = [
     "answers": {"plutonic": "f", "romantic": "d", "both": "t"}
 },
 {
-    "question": "How hard do you try to maintain this relationship? (1)i don't really try (5) i give it everything",
+    "question": "How hard do you try to maintain this relationship? 1)i don't really try 5) i give it everything",
     "answers": {"1": "c", "2": "t", "3": "b", "4":"d", "5": "s"}
 },
 {

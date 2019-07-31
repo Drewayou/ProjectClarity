@@ -123,3 +123,26 @@ h1 {
   font-family: ;
   color:white;
 }
+
+h3 {
+  font-family: helvetica;
+}
+
+h2 {
+  font-family: helvetica;
+  border: 5px outset salmon;
+  padding: 15px;
+  margin: 30px;
+  text-align: center;
+}
+
+h4 {
+  text-align: center;
+  color: #696969;
+}
+
+
+img {
+    display: block;
+    margin: 0 auto;
+}

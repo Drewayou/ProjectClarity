@@ -65,22 +65,69 @@ class MainPage(webapp2.RequestHandler):
             first_name = self.request.get('first name'),
             last_name = self.request.get('last name'),
             email = user.nickname(),
-            quiz_questions = json.dumps(questions.elements, separators=(',', ':'))
+            quiz_questions = json.dumps(questions.elements, separators=(',', ':')),
+            ccount = 0,
+            fcount = 0,
+            bcount = 0,
+            tcount = 0,
+            dcount = 0,
+            scount = 0,
             )
 
         clarity_user.put()
-        self.response.write('Thanks for signing up, %s! <br><a href="/start">Next</a>' % clarity_user.first_name)
+        self.response.write('Thanks for signing up, %s! <br><a href="/start">Next</a>' %clarity_user.first_name)
 
 class QuizPage(webapp2.RequestHandler):
+    ccount = 0
+    fcount = 0
+    bcount = 0
+    tcount = 0
+    dcount = 0
+    scount = 0
     def get(self):
         user = users.get_current_user()
         quiz_taker = ClarityUser.query().filter(ClarityUser.email == user.nickname()).fetch()
         Quiz_html = the_jinja_env.get_template('quiz.html')
         problems = json.loads(quiz_taker[0].quiz_questions)
         variable_dict= {
-        "question": problems.pop()
+        "question": problems[0],
+        "index": 0
         }
         self.response.write(Quiz_html.render(variable_dict))
+    def post(self):
+        crush = quiz_taker[0].ccount
+        friend = quiz_taker[0].fcount
+        bestie = quiz_taker[0].bcount
+        talking = quiz_taker[0].tcount
+        dating = quiz_taker[0].dcount
+        serious = quiz_taker[0].scount
+        selection1 = self.request.get('answer-choice')
+        if selection1 == "s":
+            scount += 1
+        elif selection1 == "d":
+            dcount += 1
+        elif selection1 == "t":
+            tcount += 1
+        elif selection1 == "b":
+            bcount += 1
+        elif selection1 == "f":
+            fcount += 1
+        elif selection1 == "c":
+            ccount += 1
+        problem_index = self.request.get('problem-index')
+        new_index = int(problem_index) + 1
+        if new_index < len(problems):
+            user = users.get_current_user()
+            quiz_taker = ClarityUser.query().filter(ClarityUser.email == user.nickname()).fetch()
+            Quiz_html = the_jinja_env.get_template('quiz.html')
+            problems = json.loads(quiz_taker[0].quiz_questions)
+            variable_dict= {
+            "question": problems[new_index],
+            "index": new_index
+            }
+            self.response.write(Quiz_html.render(variable_dict))
+        else:
+            self.response.write("You're Done!")
 
 
 app = webapp2.WSGIApplication([

@@ -12,6 +12,11 @@ the_jinja_env = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
+class Aboutus(webapp2.RequestHandler):
+    def get(self):
+        Aboutus_html = the_jinja_env.get_template('Aboutus.html')
+        self.response.write(Aboutus_html.render())
+
 class Loginpg(webapp2.RequestHandler):
     def get(self):
         Loginpg_html = the_jinja_env.get_template('Loginpg.html')
@@ -27,6 +32,12 @@ class ClarityUser(ndb.Model):
     last_name = ndb.StringProperty()
     email = ndb.StringProperty()
     quiz_questions = ndb.JsonProperty()
+    ccount = ndb.IntegerProperty()
+    fcount = ndb.IntegerProperty()
+    bcount = ndb.IntegerProperty()
+    tcount = ndb.IntegerProperty()
+    dcount = ndb.IntegerProperty()
+    scount = ndb.IntegerProperty()
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
@@ -55,6 +66,12 @@ class MainPage(webapp2.RequestHandler):
           # If the user isn't logged in...
             login_url = users.create_login_url('/')
             login_html_element = '<a href="%s">Sign in</a>' % login_url
+            Login_html = the_jinja_env.get_template('Loginpg.html')
+            login_url = users.create_login_url('/')
+            login_dict={
+            "login_url": login_url
+            }
+            self.response.write(Login_html.render(login_dict))
             self.response.write('Please log in.<br>' + login_html_element)
 
 
@@ -65,11 +82,18 @@ class MainPage(webapp2.RequestHandler):
             first_name = self.request.get('first name'),
             last_name = self.request.get('last name'),
             email = user.nickname(),
-            quiz_questions = json.dumps(questions.elements, separators=(',', ':'))
+            quiz_questions = json.dumps(questions.elements, separators=(',', ':')),
+            ccount = 0,
+            fcount = 0,
+            bcount = 0,
+            tcount = 0,
+            dcount = 0,
+            scount = 0,
             )
 
         clarity_user.put()
-        self.response.write('Thanks for signing up, %s! <br><a href="/start">Next</a>' % clarity_user.first_name)
+
+        self.response.write('Thanks for signing up, %s! <br><a href="/start">Next</a>' %clarity_user.first_name)
 
 class QuizPage(webapp2.RequestHandler):
     def get(self):
@@ -78,14 +102,94 @@ class QuizPage(webapp2.RequestHandler):
         Quiz_html = the_jinja_env.get_template('quiz.html')
         problems = json.loads(quiz_taker[0].quiz_questions)
         variable_dict= {
-        "question": problems.pop()
+        "question": problems[0],
+        "index": 0
         }
         self.response.write(Quiz_html.render(variable_dict))
+    def post(self):
+        user = users.get_current_user()
+        quiz_taker = ClarityUser.query().filter(ClarityUser.email == user.nickname()).fetch()
+        Quiz_html = the_jinja_env.get_template('quiz.html')
+        problems = json.loads(quiz_taker[0].quiz_questions)
+        crush = quiz_taker[0].ccount
+        friend = quiz_taker[0].fcount
+        bestie = quiz_taker[0].bcount
+        talking = quiz_taker[0].tcount
+        dating = quiz_taker[0].dcount
+        serious = quiz_taker[0].scount
+        selection1 = self.request.get('answer-choice')
+
+        if selection1 == "s":
+            serious += 1
+        elif selection1 == "d":
+            dating += 1
+        elif selection1 == "t":
+            talking += 1
+        elif selection1 == "b":
+            bestie += 1
+        elif selection1 == "f":
+            friend += 1
+        elif selection1 == "c":
+            crush += 1
+
+        problem_index = self.request.get('problem-index')
+        new_index = int(problem_index) + 1
+
+        if new_index < 10:
+            variable_dict= {
+            "question": problems[new_index],
+            "index": new_index
+            }
+            self.response.write(Quiz_html.render(variable_dict))
+        else:
+            category_counts = [crush, friend, bestie, talking, dating, serious]
+            max_count = max(category_counts)
+            result_page = ''
+            if max_count == crush:
+                result_page = 'results_c.html'
+            elif max_count == friend:
+                result_page = 'results_f.html'
+            elif max_count == bestie:
+                result_page = 'results_b.html'
+            elif max_count == talking:
+                result_page = 'results_t.html'
+            elif max_count == dating:
+                result_page = 'results_d.html'
+            else:
+                result_page = 'results_s.html'
+            Results_html = the_jinja_env.get_template(result_page)
+            self.response.write(Results_html.render())
 
 class ResultsCPage(webapp2.RequestHandler):
     def get(self):
+        ResultsC_html = the_jinja_env.get_template('results_c.html')
+        self.response.write(ResultsC_html.render())
 
-        self.response.write
+class ResultsFPage(webapp2.RequestHandler):
+    def get(self):
+        ResultsF_html = the_jinja_env.get_template('results_f.html')
+        self.response.write(ResultsF_html.render())
+
+class ResultsBPage(webapp2.RequestHandler):
+    def get(self):
+        ResultsB_html = the_jinja_env.get_template('results_b.html')
+        self.response.write(ResultsB_html.render())
+
+class ResultsTPage(webapp2.RequestHandler):
+    def get(self):
+        ResultsT_html = the_jinja_env.get_template('results_t.html')
+        self.response.write(ResultsT_html.render())
+
+class ResultsDPage(webapp2.RequestHandler):
+    def get(self):
+        ResultsD_html = the_jinja_env.get_template('results_d.html')
+        self.response.write(ResultsD_html.render())
+
+class ResultsSPage(webapp2.RequestHandler):
+    def get(self):
+        ResultsS_html = the_jinja_env.get_template('results_s.html')
+        self.response.write(ResultsS_html.render())
+
 
 
 app = webapp2.WSGIApplication([
@@ -94,4 +198,10 @@ app = webapp2.WSGIApplication([
     ('/quiz', QuizPage),
     ('/login', Loginpg),
     ('/results-c', ResultsCPage),
-    ])
+    ('/results-f', ResultsFPage),
+    ('/results-b', ResultsBPage),
+    ('/results-t', ResultsTPage),
+    ('/results-d', ResultsDPage),
+    ('/results-s', ResultsSPage),
+    ('/about', Aboutus),
+], debug=True)

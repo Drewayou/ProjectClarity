@@ -5,16 +5,23 @@
   bottom: 0;
   min-width: 100%;
   min-height: 100%;
+  z-index: -1;
 }
 
 #input_usr_signin {
     font-size: 75px;
 }
 
-#changin {
-  animation-name: Changin_color;
-  animation-duration: 4s;
-  animation-iteration-count: infinite;
+#gogle{
+  width: 150px;
+  height: 50px;
+}
+
+#circle {
+      width: 100px;
+      height: 100px;
+      background: red;
+      border-radius: 50%
 }
 
 #centerbox{
@@ -41,14 +48,6 @@ text-align: center;
     justify-content: center;
 }
 
-@keyframes Changin_color {
-  from {background: green;}
-  25% {background: red;}
-  50% {background: yellow;}
-  75% {background: blue;}
-  to {background: green;}
-}
-
 .button {
   position: relative;
   background-color: #4CAF50;
@@ -59,10 +58,22 @@ text-align: center;
   width: 350px;
   text-align: center;
   -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
+  transition-duration: 3s;
   text-decoration: none;
   overflow: hidden;
   cursor: pointer;
+  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 350px 350px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+}
+
+.button:hover {
+  background-color: #228B22;
+  transform: scale(1.20, 1.20);
+}
+
+.box:hover::after {
+    opacity: 1;
 }
 
 .slide {
@@ -75,6 +86,16 @@ text-align: center;
   transition-duration: 0.4s;
   overflow: hidden;
   cursor: pointer;
+}
+
+
+.AbtUsTitle {
+  position: relative;
+  font-family: Futura;
+  padding: 20px;
+  text-align: center;
+  -webkit-transition-duration: 1s; /* Safari */
+  transition-duration: 1s;
 }
 
 .button:after {
@@ -94,10 +115,75 @@ text-align: center;
   padding: 0;
   margin: 0;
   opacity: 1;
-  transition: 0s
+  transform: scale(3, 3);
+  transition: 0s;
+  transform: translateY(4px);
 }
 
+.row {
+  display: flex;
+  justify-content:space-between;
+}
+
+.row2 {
+  display: flex;
+  position: absolute;
+}
+
+.column {
+  display: flex;
+  padding: 50px;
+  justify-content:space-between;
+  margin-left: auto ;
+  margin-right: auto ;
+}
+
+
+.round_img {
+  border-radius: 50%;
+  z-index: 5;
+  transition-property: transform;
+  transition-duration: .25s;
+  box-shadow: 0px 25px 100px #000000;
+}
+
+.round_img:hover {
+  transform: scale(1.05, 1.05);
+  transition-property: transform;
+  transition-duration: .25s;
+  z-index: 0;
+}
+
+.round_img:active {
+  transform: scale(1.0, 1.0);
+  transition-property: transform;
+  transition-duration: .25s;
+}
+
+.miniround_img {
+  position: relative;
+  bottom: 10px;
+  z-index: 10;
+}
+
+.column_2 {
+  display: flex;
+  padding: 145px;
+  justify-content:space-between;
+  margin-left: auto ;
+  margin-right: auto ;
+  z-index: 1;
+}
+
+
 h1 {
-  font-family: Bebas;
+  font-family: Futura;
   color:white;
+  font-size: 60px
+}
+
+h6 {
+  font-family: Futura;
+  color: white;
+  font-size: 60px
 }

@@ -135,7 +135,7 @@ class QuizPage(webapp2.RequestHandler):
         problem_index = self.request.get('problem-index')
         new_index = int(problem_index) + 1
 
-        if new_index < len(problems):
+        if new_index < 10:
             variable_dict= {
             "question": problems[new_index],
             "index": new_index
@@ -144,18 +144,21 @@ class QuizPage(webapp2.RequestHandler):
         else:
             category_counts = [crush, friend, bestie, talking, dating, serious]
             max_count = max(category_counts)
+            result_page = ''
             if max_count == crush:
-                self.response.write('crush')
+                result_page = 'results_c.html'
             elif max_count == friend:
-                self.response.write('friend')
+                result_page = 'results_f.html'
             elif max_count == bestie:
-                self.response.write('bestie')
+                result_page = 'results_b.html'
             elif max_count == talking:
-                self.response.write('talking')
+                result_page = 'results_t.html'
             elif max_count == dating:
-                self.response.write('dating')
+                result_page = 'results_d.html'
             else:
-                self.response.write('serious')
+                result_page = 'results_s.html'
+            Results_html = the_jinja_env.get_template(result_page)
+            self.response.write(Results_html.render())
 
 class ResultsCPage(webapp2.RequestHandler):
     def get(self):

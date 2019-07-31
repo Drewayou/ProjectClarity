@@ -95,8 +95,18 @@ class QuizPage(webapp2.RequestHandler):
 
 class ResultsCPage(webapp2.RequestHandler):
     def get(self):
+        ResultsC_html = the_jinja_env.get_template('results_c.html')
+        self.response.write(ResultsC_html.render())
 
-        self.response.write
+class ResultsFPage(webapp2.RequestHandler):
+    def get(self):
+        ResultsF_html = the_jinja_env.get_template('results_f.html')
+        self.response.write(ResultsF_html.render())
+
+class ResultsBPage(webapp2.RequestHandler):
+    def get(self):
+        ResultsB_html = the_jinja_env.get_template('results_b.html')
+        self.response.write(ResultsB_html.render())
 
 
 app = webapp2.WSGIApplication([
@@ -105,5 +115,7 @@ app = webapp2.WSGIApplication([
     ('/quiz', QuizPage),
     ('/login', Loginpg),
     ('/results-c', ResultsCPage),
+    ('/results-f', ResultsFPage),
+    ('/results-b', ResultsBPage),
     ('/about', Aboutus),
 ], debug=True)

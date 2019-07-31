@@ -108,6 +108,22 @@ class ResultsBPage(webapp2.RequestHandler):
         ResultsB_html = the_jinja_env.get_template('results_b.html')
         self.response.write(ResultsB_html.render())
 
+class ResultsTPage(webapp2.RequestHandler):
+    def get(self):
+        ResultsT_html = the_jinja_env.get_template('results_t.html')
+        self.response.write(ResultsT_html.render())
+
+class ResultsDPage(webapp2.RequestHandler):
+    def get(self):
+        ResultsD_html = the_jinja_env.get_template('results_d.html')
+        self.response.write(ResultsD_html.render())
+
+class ResultsSPage(webapp2.RequestHandler):
+    def get(self):
+        ResultsS_html = the_jinja_env.get_template('results_s.html')
+        self.response.write(ResultsS_html.render())
+
+
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),
@@ -117,5 +133,8 @@ app = webapp2.WSGIApplication([
     ('/results-c', ResultsCPage),
     ('/results-f', ResultsFPage),
     ('/results-b', ResultsBPage),
+    ('/results-t', ResultsTPage),
+    ('/results-d', ResultsDPage),
+    ('/results-s', ResultsSPage),
     ('/about', Aboutus),
 ], debug=True)

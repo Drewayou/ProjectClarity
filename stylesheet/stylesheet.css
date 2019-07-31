@@ -5,16 +5,23 @@
   bottom: 0;
   min-width: 100%;
   min-height: 100%;
+  z-index: -1;
 }
 
 #input_usr_signin {
     font-size: 75px;
 }
 
-#changin {
-  animation-name: Changin_color;
-  animation-duration: 4s;
-  animation-iteration-count: infinite;
+#gogle{
+  width: 150px;
+  height: 50px;
+}
+
+#circle {
+      width: 100px;
+      height: 100px;
+      background: red;
+      border-radius: 50%
 }
 
 #centerbox{
@@ -41,14 +48,6 @@ text-align: center;
     justify-content: center;
 }
 
-@keyframes Changin_color {
-  from {background: green;}
-  25% {background: red;}
-  50% {background: yellow;}
-  75% {background: blue;}
-  to {background: green;}
-}
-
 .button {
   position: relative;
   background-color: #4CAF50;
@@ -59,10 +58,22 @@ text-align: center;
   width: 350px;
   text-align: center;
   -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
+  transition-duration: 3s;
   text-decoration: none;
   overflow: hidden;
   cursor: pointer;
+  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 350px 350px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+}
+
+.button:hover {
+  background-color: #228B22;
+  transform: scale(1.20, 1.20);
+}
+
+.box:hover::after {
+    opacity: 1;
 }
 
 .slide {
@@ -94,7 +105,9 @@ text-align: center;
   padding: 0;
   margin: 0;
   opacity: 1;
-  transition: 0s
+  transform: scale(3, 3);
+  transition: 0s;
+  transform: translateY(4px);
 }
 
 h1 {

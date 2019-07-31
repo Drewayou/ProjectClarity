@@ -12,6 +12,11 @@ the_jinja_env = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
+class Aboutus(webapp2.RequestHandler):
+    def get(self):
+        Aboutus_html = the_jinja_env.get_template('Aboutus.html')
+        self.response.write(Aboutus_html.render())
+
 class Loginpg(webapp2.RequestHandler):
     def get(self):
         Loginpg_html = the_jinja_env.get_template('Loginpg.html')
@@ -55,6 +60,12 @@ class MainPage(webapp2.RequestHandler):
           # If the user isn't logged in...
             login_url = users.create_login_url('/')
             login_html_element = '<a href="%s">Sign in</a>' % login_url
+            Login_html = the_jinja_env.get_template('Loginpg.html')
+            login_url = users.create_login_url('/')
+            login_dict={
+            "login_url": login_url
+            }
+            self.response.write(Login_html.render(login_dict))
             self.response.write('Please log in.<br>' + login_html_element)
 
 
@@ -129,10 +140,29 @@ class QuizPage(webapp2.RequestHandler):
         else:
             self.response.write("You're Done!")
 
+class ResultsCPage(webapp2.RequestHandler):
+    def get(self):
+        ResultsC_html = the_jinja_env.get_template('results_c.html')
+        self.response.write(ResultsC_html.render())
+
+class ResultsFPage(webapp2.RequestHandler):
+    def get(self):
+        ResultsF_html = the_jinja_env.get_template('results_f.html')
+        self.response.write(ResultsF_html.render())
+
+class ResultsBPage(webapp2.RequestHandler):
+    def get(self):
+        ResultsB_html = the_jinja_env.get_template('results_b.html')
+        self.response.write(ResultsB_html.render())
+
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/start', FirstPage),
     ('/quiz', QuizPage),
-    ('/login', Loginpg)
+    ('/login', Loginpg),
+    ('/results-c', ResultsCPage),
+    ('/results-f', ResultsFPage),
+    ('/results-b', ResultsBPage),
+    ('/about', Aboutus),
 ], debug=True)

@@ -164,6 +164,8 @@ class ResultsCPage(webapp2.RequestHandler):
     def get(self):
         ResultsC_html = the_jinja_env.get_template('results_c.html')
         self.response.write(ResultsC_html.render())
+    def post(self):
+        print("Hello")
 
 class ResultsFPage(webapp2.RequestHandler):
     def get(self):
@@ -195,6 +197,11 @@ class Logoutpg(webapp2.RequestHandler):
         Logoutpg_html = the_jinja_env.get_template('Logoutpg.html')
         self.response.write(Logoutpg_html.render())
 
+class Gallerypg(webapp2.RequestHandler):
+    def get(self):
+        Gallerypg_html = the_jinja_env.get_template('Gallerypg.html')
+        self.response.write(Gallerypg_html.render())
+
 app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/start', FirstPage),
@@ -208,4 +215,5 @@ app = webapp2.WSGIApplication([
     ('/results-s', ResultsSPage),
     ('/about', Aboutus),
     ('/logout', Logoutpg),
+    ('/gallery', Gallerypg),
 ], debug=True)

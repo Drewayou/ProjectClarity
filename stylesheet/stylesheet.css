@@ -212,20 +212,34 @@ img {
 }
 
 .save_results_button {
-  position: relative;
-  background-color: IndianRed;
-  border: none;
-  font-size: 28px;
-  color: #FFFFFF;
-  padding: 20px;
-  width: 350px;
-  text-align: center;
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 3s;
-  text-decoration: none;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
-  box-shadow: 0 350px 350px rgba(0, 0, 0, 0.1);
-  border-radius: 25px;
+  background-color: LightCoral;
+    color: white;
+    padding: 12px 28px;
+    text-align: center;
+    text-decoration: none;
+    width: 250px;
+    height: 100px;
+    float: inherit;
+}
+
+.save_results_button h1 {
+  font-size: 25px;
+  font-family: Rockwell;
+
+}
+
+.save_results_button:hover {background-color: IndianRed}
+
+.go_back_button {
+  background-color: Coral;
+    color: white;
+    padding: 12px 28px;
+    text-align: center;
+    text-decoration: none;
+    width: 100px;
+    height: 50px;
+    float: inherit;
+    font-size: 10px;
+    font-family: Rockwell;
+
 }

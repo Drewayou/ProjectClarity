@@ -31,11 +31,22 @@
       connection between the two of you instead of the weird illusion of a
       connection that is brought on by crushing.
     </h3>
+<div style= "font-family: Futura; width:100%; text-align: center; "class="">
 
-    <input style= "font-family: Futura; width: 300px; height: 25px; text-align: center;" type="text" name="their_name" placeholder="Enter Their Name Here">
-
-    <form class=slide action="/gallery" method="get">
+    <input style= "font-family: Futura; width: 300px; height: 25px; text-align: center; "
+    type="text" name="their_name" placeholder="Enter Their Name Here">
+</div>
+    <form class=slide action="/gallery" method="post">
         <button class="save_results_button"><h1>Save Results</h1></button>
     </form>
+
+    <button class="go_back_button" onclick="goBack()">Back to Main Page</button>
+
+    <script>
+    function goBack() {
+      window.history.back();
+    }
+    </script>
+
   </body>
 </html>

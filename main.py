@@ -38,7 +38,7 @@ class ClarityUser(ndb.Model):
     tcount = ndb.IntegerProperty()
     dcount = ndb.IntegerProperty()
     scount = ndb.IntegerProperty()
-    results = ndb.JsonPropterty()
+    results = ndb.JsonProperty()
 
 class MainPage(webapp2.RequestHandler):
     def get(self):

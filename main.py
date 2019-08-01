@@ -43,44 +43,57 @@ class MainPage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         if user:
-            signout_link_html = '<a href="%s">sign out</a>' % (
-                    users.create_logout_url('/'))
+            #signout_link_html = '<a href="%s">sign out</a>' % (
+            #        users.create_logout_url('/')
+            signout_link_html = users.create_logout_url('/')
             email_address = user.nickname()
             clarity_user = ClarityUser.query().filter(ClarityUser.email == email_address).get()
             if clarity_user:
-                self.response.write(
-                  'Looks like you\'re registered. Thanks for using our site!<br><a href="/start">Next</a><br>')
-                self.response.write(signout_link_html)
+                Registree_html = the_jinja_env.get_template('register2.html')
+                variable_dict= {
+                "signout": signout_link_html,
+                "username": clarity_user.first_name
+                }
+                self.response.write(Registree_html.render(variable_dict))
+                #self.response.write(
+                #  'Looks like you\'re registered. Thanks for using our site!<br><a href="/start">Next</a><br>')
+                #self.response.write(signout_link_html)
             else:
                 # Registration form for a first-time visitor:
-                self.response.write('''
-                    Welcome to our site, %s!  Please sign up! <br>
-                    <form method="post" action="/">
-                    <input type="text" name="first_name">
-                    <input type="text" name="last_name">
-                    <input type="submit">
-                    </form><br> %s <br>
-                    ''' % (email_address, signout_link_html))
+                Register_html = the_jinja_env.get_template('register1.html')
+                variable_dict= {
+                "email": email_address,
+                "signout": signout_link_html
+                }
+                self.response.write(Register_html.render(variable_dict))
+                #self.response.write('''
+                #    Welcome to our site, %s!  Please sign up! <br>
+                #    <form method="post" action="/">
+                #    <input type="text" name="first_name">
+                #    <input type="text" name="last_name">
+                #    <input type="submit">
+                #    </form><br> %s <br>
+                #    ''' % (email_address, signout_link_html))
 
         else:
           # If the user isn't logged in...
             login_url = users.create_login_url('/')
-            login_html_element = '<a href="%s">Sign in</a>' % login_url
-            Login_html = the_jinja_env.get_template('Loginpg.html')
-            login_url = users.create_login_url('/')
+            #login_html_element = '<a href="%s">Sign in</a>' % login_url
+            Login_html = the_jinja_env.get_template('signin.html')
+            #login_url = users.create_login_url('/')
             login_dict={
-            "login_url": login_url
+            "login_site": login_url
             }
             self.response.write(Login_html.render(login_dict))
-            self.response.write('Please log in.<br>' + login_html_element)
+            #self.response.write('Please log in.<br>' + login_html_element)
 
 
     def post(self):
         user = users.get_current_user()
         random.shuffle(questions.elements)
         clarity_user = ClarityUser(
-            first_name = self.request.get('first name'),
-            last_name = self.request.get('last name'),
+            first_name = self.request.get('first_name'),
+            last_name = self.request.get('last_name'),
             email = user.nickname(),
             quiz_questions = json.dumps(questions.elements, separators=(',', ':')),
             ccount = 0,
@@ -93,7 +106,14 @@ class MainPage(webapp2.RequestHandler):
 
         clarity_user.put()
 
-        self.response.write('Thanks for signing up, %s! <br><a href="/start">Next</a>' %clarity_user.first_name)
+        signout_link_html = users.create_logout_url('/')
+        Thankyou_html = the_jinja_env.get_template('signup.html')
+        variable_dict= {
+        "signout": signout_link_html,
+        "username": clarity_user.first_name
+        }
+        self.response.write(Thankyou_html.render(variable_dict))
+        #self.response.write('Thanks for signing up, %s! <br><a href="/start">Next</a>' %clarity_user.first_name)
 
 class QuizPage(webapp2.RequestHandler):
     def get(self):

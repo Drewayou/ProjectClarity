@@ -43,8 +43,9 @@ class MainPage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         if user:
-            signout_link_html = '<a href="%s">sign out</a>' % (
-                    users.create_logout_url('/'))
+            #signout_link_html = '<a href="%s">sign out</a>' % (
+            #        users.create_logout_url('/')
+            signout_link_html = users.create_logout_url('/')
             email_address = user.nickname()
             clarity_user = ClarityUser.query().filter(ClarityUser.email == email_address).get()
             if clarity_user:
@@ -77,11 +78,11 @@ class MainPage(webapp2.RequestHandler):
         else:
           # If the user isn't logged in...
             login_url = users.create_login_url('/')
-            login_html_element = '<a href="%s">Sign in</a>' % login_url
+            #login_html_element = '<a href="%s">Sign in</a>' % login_url
             Login_html = the_jinja_env.get_template('signin.html')
             #login_url = users.create_login_url('/')
             login_dict={
-            "login_url": login_url
+            "login_site": login_url
             }
             self.response.write(Login_html.render(login_dict))
             #self.response.write('Please log in.<br>' + login_html_element)
@@ -105,8 +106,7 @@ class MainPage(webapp2.RequestHandler):
 
         clarity_user.put()
 
-        signout_link_html = '<a href="%s">sign out</a>' % (
-                users.create_logout_url('/'))
+        signout_link_html = users.create_logout_url('/')
         Thankyou_html = the_jinja_env.get_template('signup.html')
         variable_dict= {
         "signout": signout_link_html,

@@ -38,6 +38,7 @@ class ClarityUser(ndb.Model):
     tcount = ndb.IntegerProperty()
     dcount = ndb.IntegerProperty()
     scount = ndb.IntegerProperty()
+    results = ndb.JsonPropterty()
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
@@ -102,6 +103,7 @@ class MainPage(webapp2.RequestHandler):
             tcount = 0,
             dcount = 0,
             scount = 0,
+            results = json.dumps([], separators=(',', ':')),
             )
 
         clarity_user.put()
@@ -218,9 +220,18 @@ class Logoutpg(webapp2.RequestHandler):
         self.response.write(Logoutpg_html.render())
 
 class Gallerypg(webapp2.RequestHandler):
-    def get(self):
-        Gallerypg_html = the_jinja_env.get_template('Gallerypg.html')
-        self.response.write(Gallerypg_html.render())
+    def post(self):
+        #user = users.get_current_user()
+        #quiz_taker = ClarityUser.query().filter(ClarityUser.email == user.nickname()).fetch()
+        #gallery_entries = json.loads(quiz_taker[0].results)
+        ##WORK ON THIS!!!
+        #gallery_entries.append())
+        #Gallerypg_html = the_jinja_env.get_template('Gallerypg.html')
+        #variable_dict = {
+        #    "gallerylist": gallery_entries,
+        #}
+        #self.response.write(Gallerypg_html.render(variable_dict))
+        self.response.write('realstatus')
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),

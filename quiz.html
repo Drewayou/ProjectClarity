@@ -3,18 +3,21 @@
   <head>
     <meta charset="utf-8">
     <title>Clarity Quiz</title>
+    <link rel="stylesheet" href="/stylesheet/quiz.css">
     <script src = "changes.js"></script>
   </head>
   <body>
-    <form class="" action="/quiz" method="post">
-      {{question["question"]}}<br><br>
-          {% for answer, value in question["answers"].items() %}
-          <input type="radio" name="answer-choice" value="{{value}}">{{answer}}<br><br>
-          {% endfor %}
-          <input type="hidden" name="problem-index" value="{{index}}">
-        <!--  <input type="radio" name="answer-choice1" value="yes">Yes<br>
-          <input type="radio" name="answer-choice1" value="no">No<br> -->
-          <input id = "nextbutton" type="submit" name="Next" value="Next"><br>
-    </form>
+    <div class="quiz">
+      <form class="" action="/quiz" method="post">
+        {{question["question"]}}<br><br>
+            {% for answer, value in question["answers"].items() %}
+            <input type="radio" name="answer-choice" value="{{value}}">{{answer}}<br><br>
+            {% endfor %}
+            <input type="hidden" name="problem-index" value="{{index}}">
+          <!--  <input type="radio" name="answer-choice1" value="yes">Yes<br>
+            <input type="radio" name="answer-choice1" value="no">No<br> -->
+            <input id = "nextbutton" type="submit" name="Next" value="Next"><br>
+      </form>
+    </div>
   </body>
 </html>

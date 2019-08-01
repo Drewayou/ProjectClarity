@@ -333,3 +333,36 @@ img {
     display: block;
     margin: 0 auto;
 }
+
+.save_results_button {
+  background-color: LightCoral;
+    color: white;
+    padding: 12px 28px;
+    text-align: center;
+    text-decoration: none;
+    width: 250px;
+    height: 100px;
+    float: inherit;
+}
+
+.save_results_button h1 {
+  font-size: 25px;
+  font-family: Rockwell;
+
+}
+
+.save_results_button:hover {background-color: IndianRed}
+
+.go_back_button {
+  background-color: Coral;
+    color: white;
+    padding: 12px 28px;
+    text-align: center;
+    text-decoration: none;
+    width: 100px;
+    height: 50px;
+    float: inherit;
+    font-size: 10px;
+    font-family: Rockwell;
+
+}

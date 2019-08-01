@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Gallery</title>
+  </head>
+  <body>
+    h1>My Result</h1>
+    <!--The image needs to be rendered for each new meme
+    so set the div's background-image property inline -->
+    <div id="result-div" style="background-image:url({{img_url}});">
+    </div>
+
+    <h1>All of my Results</h1>
+    {% for result in all_results %}
+    <div id="result-div" style="background-image:url({{meme.img_url}});">
+    </div>
+    {% endfor %}
+
+  </body>
+</html>

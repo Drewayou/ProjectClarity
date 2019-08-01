@@ -190,7 +190,10 @@ class ResultsSPage(webapp2.RequestHandler):
         ResultsS_html = the_jinja_env.get_template('results_s.html')
         self.response.write(ResultsS_html.render())
 
-
+class Logoutpg(webapp2.RequestHandler):
+    def get(self):
+        Logoutpg_html = the_jinja_env.get_template('Logoutpg.html')
+        self.response.write(Logoutpg_html.render())
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),
@@ -204,4 +207,5 @@ app = webapp2.WSGIApplication([
     ('/results-d', ResultsDPage),
     ('/results-s', ResultsSPage),
     ('/about', Aboutus),
+    ('/logout', Logoutpg),
 ], debug=True)

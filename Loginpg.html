@@ -6,6 +6,35 @@
     <title></title>
   </head>
   <body>
+    <!-- Below is the code for the Hamburger Menu -->
+
+    <script>
+    function menuclick(x) {
+      x.classList.toggle("change");
+      var menu = document.getElementById("menu");
+      menu.classList.toggle("change");
+    }
+    </script>
+    <div class="Mencont">
+      <div onclick="menuclick(this)">
+        <div class="Menbar1"></div>
+        <div class="Menbar2"></div>
+        <div class="Menbar3"></div>
+
+        <!-- Below this was a test bar for a click area (menu) Ignore this -->
+        <!-- <div class="Menbar4"></div> -->
+
+      </div>
+    </div>
+    <div id="menu" class="menu">
+      <ul>
+        <br></br>
+        <br></br>
+          <ls><a href="/about" class="menstyle">About Us</a><ls>
+      </ul>
+    </div>
+
+    <!-- Above is the code for the Hamburger Menu -->
     <div id = "centre2">
     <form method="post" action="/">
               <input style= "font-family: Futura; width: 375px; height: 25px; text-align: center;" type="text" name="first_name" placeholder="Username">

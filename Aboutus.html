@@ -6,25 +6,108 @@
     <link rel="stylesheet" href="/stylesheet/stylesheet.css">
   </head>
   <body>
+    <!-- Below is the code for the Hamburger Menu -->
+
+    <script>
+    function menuclick(x) {
+      x.classList.toggle("change");
+      var menu = document.getElementById("menu");
+      menu.classList.toggle("change");
+    }
+    </script>
+    <div class="Mencont">
+      <div onclick="menuclick(this)">
+        <div class="Menbar1"></div>
+        <div class="Menbar2"></div>
+        <div class="Menbar3"></div>
+
+        <!-- Below this was a test bar for a click area (menu) Ignore this -->
+        <!-- <div class="Menbar4"></div> -->
+
+      </div>
+    </div>
+    <div id="menu" class="menu">
+      <ul>
+        <br></br>
+        <br></br>
+          <ls><a href="/login" class="menstyle">login</a><ls>
+      </ul>
+    </div>
+
+    <!-- Above is the code for the Hamburger Menu -->
     <h1 id="centr" class = "AbtUsTitle">About Us</h1>
-  <!-- below is the css for our pictures and above has our social link-bubbles css -->
+  <!-- below is the css/script for our pictures and above has our social link-bubbles css -->
+
+  <script>
+
+  function lilick(x) {
+    x.classList.toggle("change");
+    var logo_view = document.getElementById("logo");
+    var logo_view2 = document.getElementById("logo.1");
+    var logo_view3 = document.getElementById("logo.2");
+    logo_view.classList.toggle("change");
+    logo_view2.classList.toggle("change");
+    logo_view3.classList.toggle("change");
+  }
+
+  function lilick2(x) {
+    x.classList.toggle("change");
+    var logo_view = document.getElementById("logo2");
+    var logo_view2 = document.getElementById("logo2.1");
+    var logo_view3 = document.getElementById("logo2.2");
+    logo_view.classList.toggle("change");
+    logo_view2.classList.toggle("change");
+    logo_view3.classList.toggle("change");
+  }
+
+  function lilick3(x) {
+    x.classList.toggle("change");
+    var logo_view = document.getElementById("logo3");
+    logo_view.classList.toggle("change");
+  }
+  </script>
   <div class="row">
     <div class="column">
+      <h1>Andrew Aguilar</h1>
       <div>
-          <img class= "round_img" src="/images/Drew.jpg" alt="" style= width:350px; height:350px>
-          <img class= "miniround_img" src="/images/LinkedinLogo.png" alt="" style= width:50px; height:50px>
+          <div onclick="lilick(this)">
+            <img class= "round_img" src="/images/Drew.jpg" alt="" style= width:350px; height:350px>
+          </div>
+            <div>
+              <a href="https://www.linkedin.com/in/andrew-aguilar-548639189">
+                <img id="logo" class= "miniround_img" src="/images/LinkedinLogo.png" alt="">
+              </a>
+              <a href="https://www.instagram.com/afadrew/">
+                <img id="logo.1" class= "miniround_imgm" src="/images/InstaLogo.png" alt="">
+              </a>
+              <a href="https://www.facebook.com/Revisedwords101">
+                <img id="logo.2" class= "miniround_imgr" src="/images/FbLogo.png" alt="">
+              </a>
+            </div>
       </div>
     </div>
     <div class="column">
-      <div>
+      <h1>Faith Reeves</h1>
+      <div onclick="lilick2(this)">
           <img class= "round_img" src="/images/Faith.jpg" alt="" style= width:350px; height:350px>
-          <img class= "miniround_img" src="/images/LinkedinLogo.png" alt="" style= width:50px; height:50px>
+            <a href="https://www.linkedin.com/in/faith-reeves-31b44618a/">
+              <img id="logo2" class= "miniround_img" src="/images/LinkedinLogo.png" alt="" style= width:50px; height:50px>
+            </a>
+            <a href="https://www.instagram.com/faithreeves00/">
+              <img id="logo2.1" class= "miniround_imgm" src="/images/InstaLogo.png" alt="" style= width:50px; height:50px>
+            </a>
+            <a href="https://www.facebook.com/faith.reeves.507">
+              <img id="logo2.2" class= "miniround_imgr" src="/images/FbLogo.png" alt="">
+            </a>
       </div>
     </div>
     <div class="column">
-      <div>
+      <h1>Crystal Chidume</h1>
+      <div onclick="lilick3(this)">
           <img class= "round_img" src="/images/Crystal.jpg" alt="" style= width:350px; height:350px>
-          <img class= "miniround_img" src="/images/LinkedinLogo.png" alt="" style= width:50px; height:50px>
+          <a href="https://www.instagram.com/crystalchidume/">
+            <img id="logo3" class= "miniround_img" src="/images/InstaLogo.png" alt="" style= width:50px; height:50px>
+          </a>
       </div>
     </div>
   </div>

@@ -316,10 +316,9 @@ h3 {
 }
 
 h2 {
+  font-size: 20px;
   font-family: helvetica;
-  border: 5px outset salmon;
-  padding: 15px;
-  margin: 30px;
+  margin: 20px;
   text-align: center;
 }
 
@@ -354,15 +353,25 @@ img {
 .save_results_button:hover {background-color: IndianRed}
 
 .go_back_button {
-  background-color: Coral;
+  background-color: Tomato;
     color: white;
     padding: 12px 28px;
     text-align: center;
     text-decoration: none;
-    width: 100px;
+    width: 120px;
     height: 50px;
     float: inherit;
-    font-size: 10px;
+    font-size: 11px;
     font-family: Rockwell;
+
+}
+
+#status {
+  font-size: 30px;
+  font-family: helvetica;
+  border: 5px outset salmon;
+  padding: 15px;
+  margin: 25px;
+  text-align: center;
 
 }

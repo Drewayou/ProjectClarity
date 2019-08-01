@@ -9,23 +9,39 @@
     <video autoplay muted loop id="VideoHandler">
       <source src="/videos/Lavabck.mp4" type="video/mp4">
     </video>
+
     <!-- Below is the code for the Hamburger Menu -->
+
     <script>
     function menuclick(x) {
       x.classList.toggle("change");
+      var menu = document.getElementById("menu");
+      menu.classList.toggle("change");
     }
     </script>
-    <div class="Mencont" onclick="menuclick(this)">
-      <div class="Menbar1"></div>
-      <div class="Menbar2"></div>
-      <div class="Menbar3"></div>
-      <div class="menu"><ul>
-          <br></br>
-        <ls class= "menstyle">About Us<ls>
-          <br></br>
-        <ls>Login<ls>
-      </ul></div>
+    <div class="Mencont">
+      <div onclick="menuclick(this)">
+        <div class="Menbar1"></div>
+        <div class="Menbar2"></div>
+        <div class="Menbar3"></div>
+
+        <!-- Below this was a test bar for a click area (menu) Ignore this -->
+        <!-- <div class="Menbar4"></div> -->
+
+      </div>
     </div>
+    <div id="menu" class="menu">
+      <ul>
+        <br></br>
+        <br></br>
+          <ls><a href="/about" class="menstyle">About Us</a><ls>
+        <br></br>
+          <ls><a href="/login" class="menstyle">login</a><ls>
+      </ul>
+    </div>
+
+    <!-- Above is the code for the Hamburger Menu -->
+
     <!-- Below are the button callers -->
     <h1 id="centr" class = "slide">"Project: Clarity"</h1>
     <form class="slide" action="/quiz" method="get">

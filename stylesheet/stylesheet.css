@@ -242,8 +242,8 @@ text-align: center;
 .Mencont{
   display: inline-block;
   cursor: pointer;
-  z-index:0;
-  height:100%
+  height:100%;
+  z-index: 1001;
 }
 
 .Menbar1, .Menbar2 ,.Menbar3{
@@ -252,24 +252,36 @@ text-align: center;
   background-color: white;
   margin: 6px 0;
   transition: 0.4s;
+  z-index: 1001;
+  position:relative
 }
 
+/* Below is a test code for a click area (menu)*/
+
+/* .Menbar4{
+  width: 35px;
+  height: 35px;
+  background-color: black;
+  position:absolute
+} */
+
 .menu {
-  position: absolute;
+  position: relative;
   transform: translate(-150px);
   top: 0;
   background-color: #1f0c0b;
   width:200px;
   height:60px;
-  z-index:-1;
   transition-property: transform;
   transition-duration: 1s;
   transition-property: height;
   transition-duration: .25s;
+  position: fixed;
+  z-index:1000;
 
 }
 
-.change .menu {
+.change.menu {
   position: fixed;
   background-color: #000000;
   transform: translate(-10px);

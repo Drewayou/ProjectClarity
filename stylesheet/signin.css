@@ -18,7 +18,7 @@ h3{
 }
 
 body{
-  background-image: linear-gradient(to bottom right, blue, green);
+  background-image: linear-gradient(to bottom right, green, yellow);
   background-size: 400% 400%;
   text-align: center;
 }

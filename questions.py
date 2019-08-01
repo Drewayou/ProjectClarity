@@ -81,7 +81,7 @@ elements = [
 },
 {
     "question": "Does this person say 'I love you'?",
-    "answers": {"in light-hearted situations": "f", "when i say it first": "t", "pretty often": "d", "all the time": "s"}
+    "answers": {"never": "c", "in light-hearted situations": "f", "when i say it first": "t", "pretty often": "d", "all the time": "s"}
 },
 {
     "question": "Have you and this person shared low moments together?",

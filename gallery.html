@@ -2,16 +2,21 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Gallery</title>
+    <title>History</title>
   </head>
   <body>
-   <h1> Relationship Gallery</h1>
-   {% for result_key in quizresults %}
-   {% set result = result_key.get() %}
-    <h3>You and {{result.name}} are {{result.status}}</h3><br><br>
-   {% endfor %}
-   <form class="" action="/start" method="post">
-     
-   </form>
+   <h1> Relationship History</h1>
+   <table>
+     <td>
+       {% for result_key in quizresults %}
+       {% set result = result_key.get() %}
+        <h3>You and {{result.name}} are {{result.status}}</h3><br><br>
+       {% endfor %}
+     </td>
+   </table>
+   <!--<form class="" action="/start" method="post">
+     <input type="submit" name="home">Go Home</input>
+   </form>-->
+   <a href="/start"><button type="button" name="button">Go Home</button></a>
   </body>
 </html>

@@ -65,7 +65,7 @@ elements = [
 },
 {
     "question": "Do you have a platonic or romantic feeling toward this person?",
-    "answers": {"plutonic": "f", "romantic": "d", "both": "t"}
+    "answers": {"platonic": "f", "romantic": "d", "both": "t"}
 },
 {
     "question": "How hard do you try to maintain this relationship? 1)i don't really try 5) i give it everything",

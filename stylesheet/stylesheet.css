@@ -86,13 +86,36 @@ font-size: 60px;
   border-radius: 25px;
 }
 
+
+.box:hover::after {
+    opacity: 1;
+}
+
 .button:hover {
   background-color: black;
   transform: scale(1.20, 1.20);
 }
 
-.box:hover::after {
-    opacity: 1;
+.buttonr {
+  position: relative;
+  background-color: black;
+  border: none;
+  color: #FFFFFF;
+  padding: 12px;
+  text-align: center;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: .40s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 1s cubic-bezier(25px, 25px, 25px, 1);
+  box-shadow: 0 150px 150px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+}
+
+.buttonr:hover {
+  background-color: black;
+  transform: scale(1.20, 1.20);
 }
 
 a:link {
@@ -105,7 +128,6 @@ a:visited {
 
 .slide {
   position: relative;
-  font-size: 60px;
   font-family:Bebas;
   padding: 20px;
   text-align: center;
@@ -418,6 +440,12 @@ h4 {
   color: #696969;
 }
 
+h5 {
+  text-align: center;
+  color: white;
+  font-family: Futura;
+  font-size: 12px
+}
 
 img {
     display: block;

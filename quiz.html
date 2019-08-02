@@ -7,7 +7,7 @@
     <script src = "changes.js"></script>
   </head>
   <body>
-    <div class="quiz">
+    <div id = "quizzes" class="quiz">
       <form class="" action="/quiz" method="post">
         {{question["question"]}}<br><br>
             {% for answer, value in question["answers"].items() %}

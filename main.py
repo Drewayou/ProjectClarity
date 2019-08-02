@@ -97,8 +97,8 @@ class MainPage(webapp2.RequestHandler):
         user = users.get_current_user()
         random.shuffle(questions.elements)
         clarity_user = ClarityUser(
-            first_name = self.request.get('first_name'),
-            last_name = self.request.get('last_name'),
+            first_name = self.request.get('First Name'),
+            last_name = self.request.get('Last Name'),
             email = user.nickname(),
             quiz_questions = json.dumps(questions.elements, separators=(',', ':')),
             ccount = 0,

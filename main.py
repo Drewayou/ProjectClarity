@@ -27,6 +27,10 @@ class FirstPage(webapp2.RequestHandler):
         First_html = the_jinja_env.get_template('first.html')
         self.response.write(First_html.render())
 
+class Relationships(ndb.Model):
+    name = ndb.StringProperty()
+    status = ndb.StringProperty()
+
 class ClarityUser(ndb.Model):
     first_name = ndb.StringProperty()
     last_name = ndb.StringProperty()
@@ -38,7 +42,7 @@ class ClarityUser(ndb.Model):
     tcount = ndb.IntegerProperty()
     dcount = ndb.IntegerProperty()
     scount = ndb.IntegerProperty()
-    results = ndb.JsonProperty()
+    results = ndb.KeyProperty(Relationships,repeated=True)
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
@@ -103,7 +107,6 @@ class MainPage(webapp2.RequestHandler):
             tcount = 0,
             dcount = 0,
             scount = 0,
-            results = json.dumps([], separators=(',', ':')),
             )
 
         clarity_user.put()
@@ -221,17 +224,20 @@ class Logoutpg(webapp2.RequestHandler):
 
 class Gallerypg(webapp2.RequestHandler):
     def post(self):
-        #user = users.get_current_user()
-        #quiz_taker = ClarityUser.query().filter(ClarityUser.email == user.nickname()).fetch()
-        #gallery_entries = json.loads(quiz_taker[0].results)
-        ##WORK ON THIS!!!
-        #gallery_entries.append())
-        #Gallerypg_html = the_jinja_env.get_template('Gallerypg.html')
-        #variable_dict = {
-        #    "gallerylist": gallery_entries,
-        #}
-        #self.response.write(Gallerypg_html.render(variable_dict))
-        self.response.write('realstatus')
+        Gallery_html= the_jinja_env.get_template('gallery.html')
+        user = users.get_current_user()
+        quiz_taker = ClarityUser.query().filter(ClarityUser.email == user.nickname()).fetch()
+        each_result = Relationships(
+        name = self.request.get('their_name'),
+        status = self.request.get('realstatus')
+        )
+        each_result_key = each_result.put()
+        quiz_taker[0].results.append(each_result_key)
+        quiz_taker[0].put()
+        variable_dict = {
+            'quizresults': quiz_taker[0].results
+        }
+        self.response.write(Gallery_html.render(variable_dict))
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),

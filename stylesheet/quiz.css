@@ -1,37 +1,21 @@
+#quizzes {
+  font-size: 30px;
+  font-family: "avenir next";
+  margin-top: 50px;
+  text-align: center;
 
-#VideoHandler {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-  z-index: -1;
 }
 
-#centerbox{
-  display: flex;
-    align-items: center;
-    justify-content: center;
+body{
+    background-color: #6ac5cc;
 }
 
-.background{
-  position: fixed;
-  z-index: -1
-}
-
-.test{
-  width: auto;
-  height: auto;
-}
-
-.quiz{
-font-family: Futura;
-font-size: 48px;
-color:white;
-}
-
-.circle_selection{
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
+#nextbutton {
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 5px;
+  width: 80px;
+  height: 35px;
 }

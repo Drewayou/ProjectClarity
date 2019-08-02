@@ -39,6 +39,13 @@
 
 #centr{
 text-align: center;
+font-family: "avenir next";
+font-size: 100px;
+}
+#centr2{
+text-align: center;
+font-family: "avenir next";
+font-size: 60px;
 }
 
 #centre2{
@@ -46,11 +53,12 @@ text-align: center;
   display: flex;
     align-items: center;
     justify-content: center;
+
 }
 
 .button {
   position: relative;
-  background-color: #4CAF50;
+  background-color: black;
   border: none;
   font-size: 28px;
   color: #FFFFFF;
@@ -68,7 +76,7 @@ text-align: center;
 }
 
 .button:hover {
-  background-color: #228B22;
+  background-color: black;
   transform: scale(1.20, 1.20);
 }
 

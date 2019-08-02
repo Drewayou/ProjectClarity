@@ -1,0 +1,23 @@
+
+
+#quizzes {
+  font-size: 30px;
+  font-family: "avenir next";
+  margin-top: 50px;
+  text-align: center;
+
+}
+
+body{
+    background-color: #6ac5cc;
+}
+
+#nextbutton {
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 5px;
+  width: 80px;
+  height: 35px;
+}

@@ -223,6 +223,9 @@ class Logoutpg(webapp2.RequestHandler):
         self.response.write(Logoutpg_html.render())
 
 class Gallerypg(webapp2.RequestHandler):
+    def get(self):
+        Gallery_html= the_jinja_env.get_template('gallery.html')
+        self.response.write(Gallery_html.render())
     def post(self):
         Gallery_html= the_jinja_env.get_template('gallery.html')
         user = users.get_current_user()

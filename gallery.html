@@ -43,9 +43,9 @@
    <h1 id="centr">Relationship Gallery</h1>
    {% for result_key in quizresults %}
    {% set result = result_key.get() %}
-   <div class="boxshp">
-     <h3 id="centr2">You and {{result.name}} are {{result.status}} </h3><br><br>
-   </div>
+     <div id="centr3" class="">
+       <h1 class="buttonr">You and {{result.name}} are {{result.status}}</h1><br><br>
+     </div>
    {% endfor %}
   </body>
   <video autoplay muted loop id="VideoHandler">

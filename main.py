@@ -225,7 +225,12 @@ class Logoutpg(webapp2.RequestHandler):
 class Gallerypg(webapp2.RequestHandler):
     def get(self):
         Gallery_html= the_jinja_env.get_template('gallery.html')
-        self.response.write(Gallery_html.render())
+        user = users.get_current_user()
+        quiz_taker = ClarityUser.query().filter(ClarityUser.email == user.nickname()).fetch()
+        variable_dict = {
+            'quizresults': quiz_taker[0].results
+        }
+        self.response.write(Gallery_html.render(variable_dict))
     def post(self):
         Gallery_html= the_jinja_env.get_template('gallery.html')
         user = users.get_current_user()

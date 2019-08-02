@@ -3,18 +3,31 @@
   <head>
     <meta charset="utf-8">
     <title>Create Account</title>
-    <link rel="stylesheet" type="text/css" href="stylesheet/signin.css">
+    <link rel="stylesheet" type="text/css" href="stylesheet/stylesheet.css">
   </head>
   <body>
-    <h1>Welcome, {{email}} !</h1><br>
-    <h3>Create a Clarity Account to continue</h3><br>
-    <form class="" action="/" method="post">
-      <h3>First Name</h3>
-      <input type="text" name="first_name" value="First Name"><br><br>
-      <h3>Last Name</h3>
-      <input type="text" name="last_name" value="Last Name"><br><br>
-      <input type="submit" name="Submit" value="Create an Account">
-    </form><br>
-    <a href="{{signout}}">Sign Out</a><br><br>
+    <div id = "centr">
+    <h1>Welcome, {{email}}!</h1>
+    <h1>Create a Clarity Account to continue</h1>
+    <br><br>
+    </div>
+    <div id = "centr">
+    <form method="post" action="/">
+              <input style= "font-family: Futura; width: 375px; height: 25px; text-align: center;" type="text" name="First Name" placeholder="First Name">
+              <br></br>
+              <input style= "font-family: Futura; width: 375px; height: 25px; text-align: center;" type="text" name="Last Name" placeholder="Last Name">
+              <br>
+              <div id = "centerbox2">
+              <input type="submit" name="Submit" value="Create an Account">
+              </div>
+    </form>
+    </div>
+    <br><br>
+    <div id = "centr">
+      <a href="{{signout}}"><h1>Sign Out</h1></a><br><br>
+    </div>
+    <video autoplay muted loop id="VideoHandler">
+      <source src="/videos/Lavabck.mp4" type="video/mp4">
+    </video>
   </body>
 </html>

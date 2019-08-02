@@ -11,12 +11,12 @@
       <form class="" action="/quiz" method="post">
         {{question["question"]}}<br><br>
             {% for answer, value in question["answers"].items() %}
-            <input type="radio" name="answer-choice" value="{{value}}">{{answer}}<br><br>
+            <input class="quiz" type="radio" name="answer-choice" value="{{value}}">{{answer}}<br><br>
             {% endfor %}
             <input type="hidden" name="problem-index" value="{{index}}">
           <!--  <input type="radio" name="answer-choice1" value="yes">Yes<br>
             <input type="radio" name="answer-choice1" value="no">No<br> -->
-            <input id = "nextbutton" type="submit" name="Next" value="Next"><br>
+            <input id = "nextbutton" class="circle_selection" type="submit" name="Next" value="Next"><br>
       </form>
     </div>
   </body>

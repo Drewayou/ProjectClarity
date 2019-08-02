@@ -300,6 +300,12 @@ a:visited {
     z-index: 0;
 }
 
+.boxshp{
+  width: inherit;
+  height: inherit;
+  background-color: white;
+}
+
 #aboutus {
   font-family: Futura;
   color: white;

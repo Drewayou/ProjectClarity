@@ -2,21 +2,54 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>History</title>
+    <title>Gallery</title>
+    <link rel="stylesheet" href="stylesheet/stylesheet.css">
   </head>
   <body>
-   <h1> Relationship History</h1>
-   <table>
-     <td>
-       {% for result_key in quizresults %}
-       {% set result = result_key.get() %}
-        <h3>You and {{result.name}} are {{result.status}}</h3><br><br>
-       {% endfor %}
-     </td>
-   </table>
-   <!--<form class="" action="/start" method="post">
-     <input type="submit" name="home">Go Home</input>
-   </form>-->
-   <a href="/start"><button type="button" name="button">Go Home</button></a>
+    <!-- Below is the code for the Hamburger Menu -->
+
+    <script>
+    function menuclick(x) {
+      x.classList.toggle("change");
+      var menu = document.getElementById("menu");
+      menu.classList.toggle("change");
+    }
+    </script>
+    <div class="Mencont">
+      <div onclick="menuclick(this)">
+        <div class="Menbar1"></div>
+        <div class="Menbar2"></div>
+        <div class="Menbar3"></div>
+
+        <!-- Below this was a test bar for a click area (menu) Ignore this -->
+        <!-- <div class="Menbar4"></div> -->
+
+      </div>
+    </div>
+    <div id="menu" class="menu">
+      <ul>
+        <br></br>
+        <br></br>
+          <ls><a href="/" class="menstyle">Home</a><ls>
+        <br></br>
+          <ls><a href="/about" class="menstyle">About Us</a><ls>
+      </ul>
+    </div>
+
+    <!-- Above is the code for the Hamburger Menu -->
+
+   <h1 id="centr">Relationship Gallery</h1>
+   {% for result_key in quizresults %}
+   {% set result = result_key.get() %}
+   <div class="boxshp">
+     <h3 id="centr2">You and {{result.name}} are {{result.status}}</h3><br><br>
+   </div>
+   {% endfor %}
+   <form class="" action="/start" method="post">
+
+   </form>
   </body>
+  <video autoplay muted loop id="VideoHandler">
+    <source src="/videos/Lavabck.mp4" type="video/mp4">
+  </video>
 </html>

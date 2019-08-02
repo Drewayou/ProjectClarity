@@ -6,5 +6,9 @@
   </head>
   <body>
    <h1> Relationship Gallery</h1>
+   {% for result_key in quizresults %}
+   {% set result = result_key.get() %}
+    <h3>You and {{result.name}} are {{result.status}}</h3><br><br>
+   {% endfor %}
   </body>
 </html>

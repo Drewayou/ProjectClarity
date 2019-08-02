@@ -9,22 +9,20 @@
     <div id = "centr">
     <h1>Welcome, {{email}}!</h1>
     <h1>Create a Clarity Account to continue</h1>
-    <br><br>
     </div>
     <div id = "centr">
     <form method="post" action="/">
-              <input style= "font-family: Futura; width: 375px; height: 25px; text-align: center;" type="text" name="First Name" placeholder="First Name">
-              <br></br>
-              <input style= "font-family: Futura; width: 375px; height: 25px; text-align: center;" type="text" name="Last Name" placeholder="Last Name">
-              <br>
-              <div id = "centerbox2">
-              <input type="submit" name="Submit" value="Create an Account">
-              </div>
+      <input style= "font-family: Futura; width: 375px; height: 25px; text-align: center;" type="text" name="First Name" placeholder="First Name">
+      <input style= "font-family: Futura; width: 375px; height: 25px; text-align: center;" type="text" name="Last Name" placeholder="Last Name">
+        <br>
+      <form>
+          <button class="button" value="Create An Account"><h1>Create An Account</h1></button>
+      </form>
     </form>
     </div>
     <br><br>
     <div id = "centr">
-      <a href="{{signout}}"><h1>Sign Out</h1></a><br><br>
+      <a href="{{signout}}"><h1>Logout</h1></a>
     </div>
     <video autoplay muted loop id="VideoHandler">
       <source src="/videos/Lavabck.mp4" type="video/mp4">

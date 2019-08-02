@@ -53,8 +53,40 @@ h3{
     -moz-appearance: none;
 }
 
-.button:hover{
+.button:hover {
+  background-color: black;
+  transform: scale(1.20, 1.20);
+}
 
+.box:hover::after {
+    opacity: 1;
+}
+
+.button {
+  position: relative;
+  background-color: black;
+  border: none;
+  font-size: 28px;
+  color: #FFFFFF;
+  padding: 20px;
+  width: 350px;
+  text-align: center;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 3s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 350px 350px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
 }
 
 #VideoHandler {
